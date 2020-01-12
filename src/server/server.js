@@ -62,7 +62,6 @@ app.post('/travel', [
         req.body.status = "SUCCESS"
         req.body.error = ""
     }
-    console.log(req.body.error )
     processTravelData(req, res)
 })
 

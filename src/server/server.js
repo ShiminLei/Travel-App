@@ -102,7 +102,6 @@ async function processTravelData(req, res) {
             }
         });
     }
-    console.log("finish 1")
 
     // get weather data from Dark Sky API
     let darkskyURL = 'https://api.darksky.net/forecast/' + process.env.DARKSKY_API_KEY + '/' + latitude + ',' + longitude + ',' + req.body.datefrom + 'T00:00:00?exclude=currently,flags,hourly'
@@ -124,7 +123,6 @@ async function processTravelData(req, res) {
             }
         });
     }
-    console.log("finish 2")
 
     // get image link from Pixabay API
     let pixabayURL = 'https://pixabay.com/api/?key=' + process.env.PIXABAY_API_KEY + '&q=' + req.body.destination + ' &image_type=photo'
@@ -144,7 +142,6 @@ async function processTravelData(req, res) {
             }
         });
     }
-    console.log("finish 3")
 
     // set error status
     if (req.body.error != "") {

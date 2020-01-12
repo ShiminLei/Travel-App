@@ -58,9 +58,6 @@ function handleSubmit(event) {
         console.log("::: data not valid :::")
         document.getElementById('error').classList.remove("pseudo");
         document.getElementById('error').innerHTML = data.error;
-        document.getElementById('weathersummary').className = '';
-        document.getElementById('weathersummary').innerHTML = '';
-        document.getElementById('destinationimage').src = '';
     }
 }    
 

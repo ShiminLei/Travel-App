@@ -1,4 +1,3 @@
-
 /* Express to run server and routes */
 const express = require('express');
 
@@ -35,39 +34,30 @@ function listening() {
 // Post Route - Travel data form / Validation
 app.post('/travel', [
     check('destination').not().isEmpty(),
-    check('datefrom').not().isEmpty(),
-    check('country').not().isEmpty()
+    check('country').not().isEmpty(),
+    check('datefrom').not().isEmpty()
 ], (req, res) => {
-    
     const errors = validationResult(req)
-
     if (!errors.isEmpty()) {
-
         req.body.status = "ERROR"
         req.body.error = ""
-
-        console.log('___ERRORS___')
-        console.log(errors)
+        console.log('FORM EMPTY ERROR!')
         errors.array().forEach(function (obj) {
-
             if (req.body.error != '') {
                 req.body.error += ', '
             }
-
             switch (obj.param) {
                 case 'destination':
                     req.body.error += 'Destination is empty';
                     break;
-                case 'datefrom':
-                    req.body.error += 'Departing date is empty';
-                    break;
                 case 'country':
                     req.body.error += 'Country is empty';
                     break;
+                case 'datefrom':
+                    req.body.error += 'Departing date is empty';
+                    break;
             }
-
         });
-
     } else {
         req.body.status = "SUCCESS"
         req.body.error = ""
@@ -139,7 +129,6 @@ async function processTravelData(req, res) {
 
     // get image link from Pixabay API
     let pixabayURL = 'https://pixabay.com/api/?key=' + process.env.PIXABAY_API_KEY + '&q=' + req.body.destination + ' &image_type=photo'
-
     if (darkskySuccess) {
         console.log("::: Now get the Pixabay image :::", pixabayURL);
 

@@ -37,6 +37,7 @@ app.post('/travel', [
     check('country').not().isEmpty(),
     check('datefrom').not().isEmpty()
 ], (req, res) => {
+    console.log('POST DATA BEGIN ------------------')
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
         req.body.status = "ERROR"
@@ -162,6 +163,7 @@ async function processTravelData(req, res) {
 
     console.log('::: POST Data :::')
     console.log(travelData)
+    console.log('POST DATA END ------------------')
 
     return res.send(travelData);
 }

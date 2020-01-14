@@ -38,6 +38,12 @@ function handleSubmit(event) {
             }
       });
 
+    function setIcons(icon, iconID) {
+      const skycons = new Skycons({ color: "black" });
+      skycons.play();
+      return skycons.set(iconID, icon);
+    }
+
     // function for valid form data
     function dataValid (data = {}) {
         console.log("::: data valid :::")
@@ -49,7 +55,7 @@ function handleSubmit(event) {
         document.getElementById('weathersummary').innerHTML = data.summary;
         document.getElementById('weathersummary').className = '';
         /* eslint-disable-next-line */
-        document.getElementById('weathersummary').classList.add(Client.getIconClass(data.icon));
+        setIcons(data.icon, document.querySelector(".icon"));
         document.getElementById('destinationimage').src = data.imagelink;
     }
     

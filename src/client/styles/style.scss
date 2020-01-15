@@ -1,34 +1,77 @@
-@import "../../../node_modules/picnic/picnic.min.css";
+//@import "../../../node_modules/picnic/picnic.min.css";
 
-.app {
-    section {
-      padding-top: 80px
-    }
-}    
+// .app {
+//     section {
+//       padding-top: 80px
+//     }
+// }    
   
-.card {
-  padding: 20px
+// .card {
+//   padding: 20px
+// }
+
+// input {
+//   margin-bottom: 10px;
+// }
+
+// select {
+//   margin-bottom: 10px;
+// }
+
+// .pixabayimage {
+//   display: block;
+//   margin-left: auto;
+//   margin-right: auto;
+//   width: 90%;
+// }
+
+// #daysleft {
+//   text-align: center;
+// }
+
+// #weathersummary {
+//   text-align: center;
+// }
+
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-input {
-  margin-bottom: 10px;
+body {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(rgb(40, 159, 169), rgb(47, 72, 143));
+  font-family: sans-serif;
+  color: white;
+}
+.location,
+.temperature {
+  height: 30vh;
+  width: 50%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.temperature {
+  flex-direction: column;
+}
+.degree-section {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.degree-section span {
+  margin: 10px;
+  font-size: 30px;
+}
+.degree-section h2 {
+  font-size: 100px;
 }
 
-select {
-  margin-bottom: 10px;
-}
-
-.pixabayimage {
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-  width: 90%;
-}
-
-#daysleft {
-  text-align: center;
-}
-
-#weathersummary {
-  text-align: center;
-}

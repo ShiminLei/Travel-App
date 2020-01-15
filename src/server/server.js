@@ -37,7 +37,7 @@ app.post('/travel', [
     check('country').not().isEmpty(),
     check('datefrom').not().isEmpty()
 ], (req, res) => {
-    console.log('POST DATA BEGIN ------------------')
+    console.log('::: POST DATA BEGIN :::')
     const errors = validationResult(req)
     if (!errors.isEmpty()) {
         req.body.status = "ERROR"
@@ -94,7 +94,7 @@ async function processTravelData(req, res) {
         console.log("::: Getting the Geonames Data :::", geonamesURL);
         await request(geonamesURL, function (err, response, body) {
             if (err) {
-                req.body.error = "Error in call to Geonames API";
+                req.body.error = "Error when call Geonames API";
             } else {
                 let geonamesData = JSON.parse(body);
                 if (geonamesData.postalCodes[0] == undefined) {
@@ -115,7 +115,7 @@ async function processTravelData(req, res) {
 
         await request(darkskyURL, function (err, response, body) {
             if (err) {
-                req.body.error = "Error in call to Dark Sky API";
+                req.body.error = "Error when call Dark Sky API";
             } else {
                 let darkskyData = JSON.parse(body);
                 if (darkskyData.daily == undefined) {
@@ -137,7 +137,7 @@ async function processTravelData(req, res) {
 
         await request(pixabayURL, function (err, response, body) {
             if (err) {
-                req.body.error = "Error in call to Pixabay API";
+                req.body.error = "Error when call Pixabay API";
             } else {
                 let pixabayData = JSON.parse(body);
                 if (pixabayData.hits[0] == undefined) {
@@ -167,9 +167,8 @@ async function processTravelData(req, res) {
         error: req.body.error
     }
 
-    console.log('::: POST Data :::')
     console.log(travelData)
-    console.log('POST DATA END ------------------')
+    console.log('::: POST DATA END :::')
 
     return res.send(travelData);
 }

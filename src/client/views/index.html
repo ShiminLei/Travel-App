@@ -12,14 +12,14 @@
 
   <div class="location">
     <h1 class="location-timezone" id="Destination">Destination</h1>
-    <canvas class="icon" width="128" height="128"></canvas>
+    <canvas class="icon" id="snow" width="128" height="128"></canvas>
   </div>
 
   <div class="middlepart">
     <div class="middleleft">
       <div class="temperature">
         <div class="degree-section">
-          <h2 class="temperature-degree" id="temperature">35</h2>
+          <h2 class="temperature-degree" id="temperature">35.00</h2>
           <span>F</span>
         </div>
       </div>
@@ -30,7 +30,7 @@
     <div class="middleright">
       <p>Image</p>
       <br>
-      <img class="pixabayimage" src="" id="destinationimage"></img>
+      <img class="pixabayimage" src="https://up.enterdesk.com/edpic/4d/d2/ea/4dd2ea92664103ead932eb30e48c55f0.jpg" id="destinationimage"></img>
     </div>
     
   </div>
@@ -1058,6 +1058,21 @@
 
     global.Skycons = Skycons;
   }(this));
+  </script>
+
+  <script>
+    var icons = new Skycons({ color: "white" }),
+        list  = [
+          "clear-day", "clear-night", "partly-cloudy-day",
+          "partly-cloudy-night", "cloudy", "rain", "sleet", "snow", "wind",
+          "fog"
+        ],
+        i;
+
+    for(i = list.length; i--; )
+      icons.set(list[i], list[i]);
+
+    icons.play();
   </script>
 
 </body>

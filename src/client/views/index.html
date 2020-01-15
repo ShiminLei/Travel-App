@@ -38,13 +38,7 @@
   
   <br>
   <main id="home" class="app">
-    <section class="flex five">
-
-      <aside class="full fifth-1000">
-      </aside>
-
-      <div class="full three-fifth-1000">
-
+      <div>
         <form class="card" id="destinationform" onsubmit="return Client.handleSubmit(event)">
           <h1>Travel Plan</h1>
 
@@ -307,17 +301,14 @@
             <label for="datefrom">Departing</label>
             <input type="date" id="datefrom" placeholder="Date of departure"></input>
 
-            <button class="button icon-plus-squared" id="adddestination" type="submit" name="" value="submit"
+            <button class="button" type="submit" name="" value="submit"
             onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)"> --> Click To Enter
             </button>
 
-          <!-- Placeholder for errors -->
-          <div id="error" class="pseudo button error"></div>
+            <div id="error" class="error"></div>
 
         </form>
-
       </div>
-    </section>
   </main>
 
   <!-- Enable Service workers -->

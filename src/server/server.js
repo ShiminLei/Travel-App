@@ -93,7 +93,7 @@ async function processTravelData(req, res) {
     // Geonames API
     let geonamesURL = 'http://api.geonames.org/postalCodeSearchJSON?placename_startsWith=' + req.body.destination + '&countryCode=' + req.body.country + '&maxRows=1&username=' + process.env.GEONAMES_USERNAME
     if (req.body.status == "SUCCESS"){
-        console.log("::: Now get the Geonames Data :::", geonamesURL);
+        console.log("::: Getting the Geonames Data :::", geonamesURL);
         await request(geonamesURL, function (err, response, body) {
             if (err) {
                 req.body.error = "Error in call to Geonames API";
@@ -113,7 +113,7 @@ async function processTravelData(req, res) {
     // get weather data from Dark Sky API
     let darkskyURL = 'https://api.darksky.net/forecast/' + process.env.DARKSKY_API_KEY + '/' + latitude + ',' + longitude + ',' + req.body.datefrom + 'T00:00:00?exclude=currently,flags,hourly'
     if (geonamesSuccess) {
-        console.log("::: Now get the Dark Sky Data :::", darkskyURL);
+        console.log("::: Getting the Dark Sky Data :::", darkskyURL);
 
         await request(darkskyURL, function (err, response, body) {
             if (err) {
@@ -135,7 +135,7 @@ async function processTravelData(req, res) {
     // get image link from Pixabay API
     let pixabayURL = 'https://pixabay.com/api/?key=' + process.env.PIXABAY_API_KEY + '&q=' + req.body.destination + ' &image_type=photo'
     if (darkskySuccess) {
-        console.log("::: Now get the Pixabay image :::", pixabayURL);
+        console.log("::: Getting the Pixabay image :::", pixabayURL);
 
         await request(pixabayURL, function (err, response, body) {
             if (err) {

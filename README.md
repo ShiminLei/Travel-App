@@ -1,14 +1,13 @@
-# Weather-Journal App Project
+# Travel App
 
-## Overview
-This project creates a Travel App with weather forecast for the time of the travel.
+## Introduction
+Travel App which can forecast the weather and temperature during the traveling.
 
 ## Instructions
-1) "npm install" to install the dependencies
-2) "rm -rf dist && npm run prod" to create the dist folder
-3) "npm start" to run the app
-4) the app listens on port 3000, so http://localhost:3000 is the web address
+- `npm install` to install all the dependencies.
+-  `rm -rf dist && npm run prod` to remove old dist and create the dist folder.
+- `npm start` to run the app, the app listens on port 3000, so open http://localhost:3000 in browser.
 
-## Extras
-* Countdown for days till departure date
-* Weather Icon near weater forecast summary line
+## Reference
+- https://darkskyapp.github.io/skycons/
+

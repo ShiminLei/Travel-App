@@ -9,21 +9,34 @@
 </head>
 
 <body cz-shortcut-listen="true">
-  <nav>
-    <a href="/" class="brand">
-      <h2>Travel App Project</h2>
-    </a>
 
-    <!-- responsive-->
-    <input id="bmenub" type="checkbox" class="show">
-    <label for="bmenub" class="burger" style="font-size:2em;">&#8801;</label>
+  <div class="location">
+    <h1 class="location-timezone" id="Destination">Destination</h1>
+    <canvas class="icon" width="128" height="128"></canvas>
+  </div>
 
-    <div class="menu">
-      <a href="https://github.com/ThomasLettenbauer/TravelApp" target="_blank" class="button icon-file-code">GitHub</a>
-      <a href="https://www.linkedin.com/in/tomlet" target="_blank" class="button icon-users">LinkedIn</a>
+  <div class="middlepart">
+    <div class="middleleft">
+      <div class="temperature">
+        <div class="degree-section">
+          <h2 class="temperature-degree" id="temperature">35</h2>
+          <span>F</span>
+        </div>
+      </div>
+      <div id="weathersummary">Weather summary.</div>
+      <div id="daysleft">Days left.</div>
     </div>
-  </nav>
 
+    <div class="middleright">
+      <p>Image</p>
+      <br>
+      <img class="pixabayimage" src="" id="destinationimage"></img>
+    </div>
+    
+  </div>
+
+  
+  <br>
   <main id="home" class="app">
     <section class="flex five">
 
@@ -34,7 +47,6 @@
 
         <form class="card" id="destinationform" onsubmit="return Client.handleSubmit(event)">
           <h1>Travel Planner</h1>
-          <fieldset>
 
             <label for="destination">My Trip to</label>
             <input type="text" id="destination" placeholder="Destination"></input>
@@ -295,25 +307,14 @@
             <label for="datefrom">Departing</label>
             <input type="date" id="datefrom" placeholder="Date of departure"></input>
 
-          </fieldset>
+            <button class="button icon-plus-squared" id="adddestination" type="submit" name="" value="submit"
+            onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)"> --> Click To Add
+            </button>
+
           <!-- Placeholder for errors -->
           <div id="error" class="pseudo button error"></div>
 
-          <button class="button icon-plus-squared" id="adddestination" type="submit" name="" value="submit"
-            onclick="return Client.handleSubmit(event)" onsubmit="return Client.handleSubmit(event)">Add
-            Destination</button>
         </form>
-
-        <div class="card" id="outputform">
-          <h1> Travel Information </h1>
-          <div>
-            <div id="daysleft"></div>
-            <div id="weathersummary"></div>
-            <canvas class="icon" width="128" height="128"></canvas>
-            <!-- Placeholder for Image -->
-            <img class="pixabayimage" src="" id="destinationimage"></img>
-          </div>
-        </div>
 
       </div>
     </section>

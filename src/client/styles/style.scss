@@ -75,3 +75,50 @@ body {
   font-size: 100px;
 }
 
+.middlepart{
+  display: grid;
+  grid-template-areas: 
+  "a a a b";
+}
+
+.middleleft{
+  grid-area: a;
+}
+
+.middleright{
+  grid-area: b;
+}
+
+button {
+  background: transparent;
+  border: none;
+  color: white;
+  padding: 6px 6px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 1px;
+  width: p;
+  border-radius: 30px;
+  align-items: flex-end;
+}
+
+form {
+  border: none;
+  padding: 10px 16px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 5px;
+  width: p;
+  border-radius: 30px;
+  align-items: flex-end;
+}
+
+#destinationimage{
+  height: 180px;
+  width: 220px;
+  margin: 0 10px;
+}

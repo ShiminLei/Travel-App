@@ -39,7 +39,7 @@ function handleSubmit(event) {
       });
 
     function setIcons(icon, iconID) {
-      const skycons = new Skycons({ color: "black" });
+      const skycons = new Skycons({ color: "white" });
       skycons.play();
       return skycons.set(iconID, icon);
     }
@@ -50,7 +50,9 @@ function handleSubmit(event) {
         document.getElementById('error').classList.add("pseudo");
         document.getElementById('error').innerHTML = "";
         document.getElementById('daysleft').innerHTML = data.daysleft;
-        
+        // destination and temperature
+        document.getElementById('Destination').innerHTML = data.country + ' / ' + data.destination;
+        document.getElementById('temperature').innerHTML = data.temperature;
         // weather summary
         document.getElementById('weathersummary').innerHTML = data.summary;
         document.getElementById('weathersummary').className = '';

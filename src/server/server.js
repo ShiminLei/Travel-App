@@ -77,6 +77,7 @@ async function processTravelData(req, res) {
     let imageLink;
     let geonamesSuccess = false;
     let darkskySuccess = false;
+    let temperature;
 
     // calculate countdown
     let presentDate = new Date();
@@ -120,6 +121,7 @@ async function processTravelData(req, res) {
                     weatherSummary = darkskyData.daily.data[0].summary;
                     weatherIcon = darkskyData.daily.data[0].icon;
                     darkskySuccess = true;
+                    temperature = darkskyData.daily.data[0].temperatureHigh;
                 }
             }
         });
@@ -156,6 +158,7 @@ async function processTravelData(req, res) {
         daysleft: "Your Trip to " + req.body.destination + " starts in " + countDownDays + " days",
         summary: weatherSummary,
         icon: weatherIcon,
+        temperature: temperature,
         imagelink: imageLink,
         status: req.body.status,
         error: req.body.error

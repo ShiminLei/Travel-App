@@ -63,11 +63,11 @@ app.post('/travel', [
         req.body.status = "SUCCESS"
         req.body.error = ""
     }
-    processTravelData(req, res)
+    sendTravelData(req, res)
 })
 
-// Process travel data - Validate Input, call APIs, return weather data, image link, errors
-async function processTravelData(req, res) {
+// Send travel data
+async function sendTravelData(req, res) {
 
     // variables
     let longitude;
@@ -78,8 +78,6 @@ async function processTravelData(req, res) {
     let imageLink;
     let geonamesSuccess = false;
     let darkskySuccess = false;
-
-    // daysleft
     let daysleft = Math.floor((new Date(req.body.datefrom).getTime() - new Date().getTime()) / (1000 * 3600 * 24)) + 1;
     let daysleftMessage;
     if (daysleft>=0) {
@@ -98,7 +96,7 @@ async function processTravelData(req, res) {
             } else {
                 let geonamesData = JSON.parse(body);
                 if (geonamesData.postalCodes[0] == undefined) {
-                    req.body.error = "Location of destination not found, try again with different destination/country";
+                    req.body.error = "Location not found, please try different destination/country";
                 } else {
                     longitude = geonamesData.postalCodes[0].lng;
                     latitude = geonamesData.postalCodes[0].lat;
@@ -108,7 +106,7 @@ async function processTravelData(req, res) {
         });
     }
 
-    // get weather data from Dark Sky API
+    // Dark Sky API
     let darkskyURL = 'https://api.darksky.net/forecast/' + process.env.DARKSKY_API_KEY + '/' + latitude + ',' + longitude + ',' + req.body.datefrom + 'T00:00:00?exclude=currently,flags,hourly'
     if (geonamesSuccess) {
         console.log("::: Getting the Dark Sky Data :::", darkskyURL);
@@ -130,7 +128,7 @@ async function processTravelData(req, res) {
         });
     }
 
-    // get image link from Pixabay API
+    // Pixabay API
     let pixabayURL = 'https://pixabay.com/api/?key=' + process.env.PIXABAY_API_KEY + '&q=' + req.body.destination + ' &image_type=photo'
     if (darkskySuccess) {
         console.log("::: Getting the Pixabay image :::", pixabayURL);

@@ -1,16 +1,11 @@
 function handleSubmit(event) {
     event.preventDefault()
 
-    // check what text was put into the form field
     let formDestination = document.getElementById('destination').value
     let formDateFrom = document.getElementById('datefrom').value
     let formCountry = document.getElementById('country').value
 
-    console.log("::: destination :::", formDestination);
-    console.log("::: country :::", formCountry);
-    console.log("::: datefrom :::", formDateFrom);
-
-    // async function to post form data to backend
+    // Post data to backend
     async function postFormData(url = '', data = {}) {
         const response = await fetch(url, {
           method: 'POST', 
@@ -22,13 +17,12 @@ function handleSubmit(event) {
         return response.json(); 
       }
 
-      // check the entered ISBN, if successful go ahead
       postFormData('http://localhost:3000/travel', {destination: formDestination, 
                                                     country: formCountry, 
                                                     datefrom: formDateFrom})
       .then((data) => {
         console.log('DATA')
-        console.log(data); // JSON data parsed by `response.json()` call
+        console.log(data);
         
         if ( data.status === 'SUCCESS' ) {
             console.log('SUCCESS');
@@ -44,28 +38,28 @@ function handleSubmit(event) {
       return skycons.set(iconID, icon);
     }
 
-    // function for valid form data
+    // Valid form data
     function dataValid (data = {}) {
         console.log("::: data valid :::")
         document.getElementById('error').classList.add("pseudo");
         document.getElementById('error').innerHTML = "";
-        document.getElementById('daysleft').innerHTML = data.daysleft;
         // destination and temperature
         document.getElementById('Destination').innerHTML = data.country + ' / ' + data.destination;
         document.getElementById('temperature').innerHTML = data.temperature;
-        // weather summary
+        // weather summary and days left
         document.getElementById('weathersummary').innerHTML = data.summary;
         document.getElementById('weathersummary').className = '';
-        /* eslint-disable-next-line */
+        document.getElementById('daysleft').innerHTML = data.daysleft;
+        // icon and image
         setIcons(data.icon, document.querySelector(".icon"));
         document.getElementById('destinationimage').src = data.imagelink;
     }
     
-    // function for invalid form data - show the errors
+    // Invalid form data
     function dataNotValid (data = {}) {
         console.log("::: data not valid :::")
         document.getElementById('error').classList.remove("pseudo");
-        document.getElementById('error').innerHTML = 'Error: ' + data.error;
+        document.getElementById('error').innerHTML = 'Error!  ' + data.error;
     }
 }    
 

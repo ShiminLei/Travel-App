@@ -79,13 +79,18 @@ async function processTravelData(req, res) {
     let darkskySuccess = false;
     let temperature;
 
-    // calculate countdown
+    // daysleft
     let presentDate = new Date();
     let travelDate = new Date(req.body.datefrom)
-    let countDownDays = Math.floor((travelDate.getTime() - presentDate.getTime()) / (1000 * 3600 * 24)) + 1;
+    let daysleft = Math.floor((travelDate.getTime() - presentDate.getTime()) / (1000 * 3600 * 24)) + 1;
+    let daysleftMessage;
+    if (daysleft>=0) {
+        daysleftMessage = "Your traveling to " + req.body.destination + " will begin in " + daysleft + " days.";
+    }else{
+        daysleftMessage = "The departure time has passed " + Math.abs(daysleft) + " days.";
+    }
 
-    // get location from Geonames API and fetch first entry
-    // Username in process.env.GEONAMES_USERNAME
+    // Geonames API
     let geonamesURL = 'http://api.geonames.org/postalCodeSearchJSON?placename_startsWith=' + req.body.destination + '&countryCode=' + req.body.country + '&maxRows=1&username=' + process.env.GEONAMES_USERNAME
     if (req.body.status == "SUCCESS"){
         console.log("::: Now get the Geonames Data :::", geonamesURL);
@@ -155,7 +160,7 @@ async function processTravelData(req, res) {
         destination: req.body.destination,
         country: req.body.country,
         datefrom: req.body.datefrom,
-        daysleft: "Your traveling to " + req.body.destination + " will begin in " + countDownDays + " days.",
+        daysleft: daysleftMessage,
         summary: weatherSummary,
         icon: weatherIcon,
         temperature: temperature,

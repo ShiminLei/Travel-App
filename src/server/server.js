@@ -80,9 +80,7 @@ async function processTravelData(req, res) {
     let temperature;
 
     // daysleft
-    let presentDate = new Date();
-    let travelDate = new Date(req.body.datefrom)
-    let daysleft = Math.floor((travelDate.getTime() - presentDate.getTime()) / (1000 * 3600 * 24)) + 1;
+    let daysleft = Math.floor((new Date(req.body.datefrom).getTime() - new Date().getTime()) / (1000 * 3600 * 24)) + 1;
     let daysleftMessage;
     if (daysleft>=0) {
         daysleftMessage = "Your traveling to " + req.body.destination + " will begin in " + daysleft + " days.";

@@ -74,10 +74,10 @@ async function processTravelData(req, res) {
     let latitude;
     let weatherSummary;
     let weatherIcon;
+    let temperature;
     let imageLink;
     let geonamesSuccess = false;
     let darkskySuccess = false;
-    let temperature;
 
     // daysleft
     let daysleft = Math.floor((new Date(req.body.datefrom).getTime() - new Date().getTime()) / (1000 * 3600 * 24)) + 1;

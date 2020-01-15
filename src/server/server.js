@@ -155,7 +155,7 @@ async function processTravelData(req, res) {
         destination: req.body.destination,
         country: req.body.country,
         datefrom: req.body.datefrom,
-        daysleft: "Your Trip to " + req.body.destination + " starts in " + countDownDays + " days",
+        daysleft: "Your traveling to " + req.body.destination + " will begin in " + countDownDays + " days.",
         summary: weatherSummary,
         icon: weatherIcon,
         temperature: temperature,

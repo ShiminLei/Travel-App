@@ -65,7 +65,7 @@ function handleSubmit(event) {
     function dataNotValid (data = {}) {
         console.log("::: data not valid :::")
         document.getElementById('error').classList.remove("pseudo");
-        document.getElementById('error').innerHTML = data.error;
+        document.getElementById('error').innerHTML = 'Error: ' + data.error;
     }
 }    
 
